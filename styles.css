@@ -80,21 +80,24 @@ h1, h2, h3, .section-title {
 
 /* 버튼 묶음 */
 .btns{ display:grid; gap:12px; }
-.btn{
+.btn {
   --bg: var(--accent);
   display:inline-grid; place-items:center;
   padding:14px 16px; border-radius:12px;
   color:#fff; text-decoration:none; font-weight:700; letter-spacing:.2px;
   background: var(--bg);
-  box-shadow: var(--shadow);
+
+  /* 기존: box-shadow: var(--shadow); */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
   transform: translateZ(0);
   transition: transform .15s ease, filter .15s ease;
 }
 .btn:hover{ transform: translateY(-1px); }
 .btn:active{ transform: translateY(0) scale(.98); }
-.btn--github{ --bg:#0f172a; }
-.btn--google{ --bg:#ea4335; }
-.btn--naver{  --bg:#03c75a; }
+.btn--github { --bg:#1e40af; }  /* 파랑 */
+.btn--google { --bg:#f97316; }  /* 주황 */
+.btn--naver { --bg:#9333ea; }   /* 보라 */
 
 .btn--icon{
   background:var(--card-bg); color:var(--text);

@@ -64,3 +64,30 @@ const spy = new IntersectionObserver((entries) => {
 }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
 
 sections.forEach(s => spy.observe(s));
+
+
+
+// [추가] 로컬/배포 환경 자동 전환
+document.addEventListener('DOMContentLoaded', () => {
+  const isLocal = ['127.0.0.1', 'localhost'].includes(location.hostname);
+
+  const buttons = [
+    { sel: '.btn--github', name: 'GitHub' },
+    { sel: '.btn--google', name: 'Google' },
+    { sel: '.btn--naver',  name: 'Naver'  },
+  ];
+
+  buttons.forEach(({ sel, name }) => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+
+    el.addEventListener('click', (e) => {
+      if (isLocal) {
+        e.preventDefault(); // 로컬에서는 이동 막기
+        console.log(`${name} 버튼이 클릭되었습니다! (로컬 테스트)`);
+      } else {
+        console.log(`${name} 페이지로 이동합니다!`);
+      }
+    });
+  });
+});
